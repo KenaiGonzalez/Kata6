@@ -1,7 +1,7 @@
 package kata6;
 
 import java.util.Scanner;
-import toys.*;
+import toys.ToyBusiness;
 
 public class Main {
 
@@ -13,10 +13,10 @@ public class Main {
         while(!("exit".equals(line = in.nextLine()))){
             switch(line){
                 case "car":
-                    tb.createCar();
+                    tb.createToy("car");
                     break;
                 case "helicopter":
-                    tb.createHelicopter();
+                    tb.createToy("helicopter");
                     break;
                 default:
                     System.out.println("Command unknown!");
