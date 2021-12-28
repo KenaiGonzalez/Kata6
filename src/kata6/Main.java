@@ -1,6 +1,7 @@
 package kata6;
 
-import branches.*;
+import factories.regionalfactories.AsianToyFactory;
+import factories.regionalfactories.AmericanToyFactory;
 import java.util.Scanner;
 import business.ToyBusiness;
 
@@ -16,11 +17,11 @@ public class Main {
             line = in.nextLine();
             switch(line){
                 case "asiatico":
-                    tb = new AsianToyBusiness();
+                    tb = new ToyBusiness(new AsianToyFactory());
                     elegido = true;
                     break;
                 case "americano":
-                    tb = new AmericanToyBusiness();
+                    tb = new ToyBusiness(new AmericanToyFactory());
                     elegido = true;
                     break;
             }
@@ -31,10 +32,10 @@ public class Main {
         while(!("exit".equals(line = in.nextLine()))){
             switch(line){
                 case "car":
-                    tb.createToy("car");
+                    tb.produceToy("car");
                     break;
                 case "helicopter":
-                    tb.createToy("helicopter");
+                    tb.produceToy("helicopter");
                     break;
                 default:
                     System.out.println("Command unknown!");

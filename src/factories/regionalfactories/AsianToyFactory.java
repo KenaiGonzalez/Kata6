@@ -1,16 +1,15 @@
-package branches;
+package factories.regionalfactories;
 
-import business.SerialNumberGenerator;
 import toyproducts.Toy;
 import toyproducts.models.AsianCarToy;
 import toyproducts.models.AsianHelicopterToy;
 
-public class AsianToyBusiness extends business.ToyBusiness{
-    private final SerialNumberGenerator sng;
-    public AsianToyBusiness() {
-        sng = new SerialNumberGenerator();
-    }
+public class AsianToyFactory extends factories.ToyFactory{
 
+    public AsianToyFactory() {
+        super();
+    }
+   
     @Override
     public Toy createToy(String type) {
         Toy toy = null;
@@ -22,8 +21,6 @@ public class AsianToyBusiness extends business.ToyBusiness{
                 toy = new AsianHelicopterToy(sng.next());
                 break;
         }
-        toy.label();
-        toy.pack();
         return toy;
     }
 
