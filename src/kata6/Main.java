@@ -1,9 +1,8 @@
 package kata6;
 
-import factories.regionalfactories.AsianToyFactory;
-import factories.regionalfactories.AmericanToyFactory;
 import java.util.Scanner;
 import business.ToyBusiness;
+import factories.regionalfactories.*;
 
 public class Main {
 
@@ -11,31 +10,34 @@ public class Main {
         Scanner in = new Scanner(System.in);
         System.out.println("Seleccionar modelo asiatico o americano");
         String line;
-        ToyBusiness tb = null;
+        ToyBusiness tb = new ToyBusiness();
         boolean elegido = false;
         while(!elegido){
             line = in.nextLine();
+            
             switch(line){
                 case "asiatico":
-                    tb = new ToyBusiness(new AsianToyFactory());
+                    tb.add("car", new AsianCarToyFactory());
+                    tb.add("helicopter",new AsianHelicopterToyFactory());
                     elegido = true;
                     break;
                 case "americano":
-                    tb = new ToyBusiness(new AmericanToyFactory());
+                    tb.add("car", new AmericanCarToyFactory());
+                    tb.add("helicopter",new AmericanHelicopterToyFactory());
                     elegido = true;
                     break;
+                    
             }
         }
        
-        System.out.println("Escribe la orden");
+        System.out.println("Escribe la orden: car( crear coche ),"
+                + " helicopter( crear helicoptero ), exit:");
         
         while(!("exit".equals(line = in.nextLine()))){
             switch(line){
                 case "car":
-                    tb.produceToy("car");
-                    break;
                 case "helicopter":
-                    tb.produceToy("helicopter");
+                    tb.produceToy(line);
                     break;
                 default:
                     System.out.println("Command unknown!");
