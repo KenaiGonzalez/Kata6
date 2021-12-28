@@ -12,10 +12,19 @@ public class Main {
         String line;
         while(!("exit".equals(line = in.nextLine()))){
             switch(line){
-                default:
+                case "car":
                     Car car = new Car(sng.next());
                     car.label();
                     car.pack();
+                    break;
+                case "helicopter":
+                    Helicopter helicopter = new Helicopter(sng.next());
+                    helicopter.label();
+                    helicopter.pack();
+                    break;
+                default:
+                    System.out.println("Command unknown!");
+                    break;
             }
             
         }
